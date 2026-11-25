@@ -20,6 +20,9 @@ jobs:
       - run: docker run --rm essi-mcp:test --help
 
   secret-scan:
+    permissions:
+      contents: read
+      pull-requests: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
