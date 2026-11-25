@@ -3,3 +3,7 @@
 [12.789, "o", "\r\nEssi MCP > lookup_word returned 1 verified roots.\r\n"]
 [12.79, "o", "\r\nEssi MCP > explain_morphology returned 2 verified rules.\r\n"]
 [18.402, "o", "\r\nCodex\r\n“Water” in Mattokki is **essi** (إيسي, ⲉⲥⲥⲓ). (`abdel-hafiz-1988`)\r\n\r\nThe indefinite suffix is **-we:r** after vowels and most consonants. After bilabial\r\nconsonants, **w** assimilates to **b**, giving **-be:r**. Recorded examples include **essi\r\n→ essi-we:r** (“a water”) and **kab → kab-be:r**. (`abdel-hafiz-1988`)\r\n"]
+[31.416667, "o", "\u001b[2J\u001b[HWhat Codex called\r\n\r\nlookup_word  {\"query\":\"water\"}\r\n1 verified root with script forms and a source.\r\n\r\nexplain_morphology  {\"rule\":\"indefinite\"}\r\n2 verified rules with recorded suffix examples."]
+[40.916667000000004, "o", "\u001b[2J\u001b[HLive verification\r\n\r\nPublic tools: 4 passed\r\nIncludes lesson listing and fetching a live lesson by ID.\r\n\r\nLearner isolation: both directions passed\r\nEach learner could read only their own profile."]
+[50.416667000000004, "o", "\u001b[2J\u001b[HTry it in your checkout\r\n\r\nnpm install && npm run build\r\nSet your Supabase project URL and public key in .env.\r\n\r\nAdd the stdio server to Codex\r\nSee Quick start in the Essi MCP README."]
+[60, "o", "\r\n"]

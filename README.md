@@ -8,7 +8,7 @@ lexicon, lessons, and learner review data stored in Essi's Supabase backend.
 
 ## Live demo
 
-[Watch the 31-second MP4](essi-codex-demo.mp4) or [view the terminal recording](essi-codex-demo.cast).
+[Watch the 60-second MP4](essi-codex-demo.mp4) or [view the terminal recording](essi-codex-demo.cast).
 Codex looks up “water” in live Essi data, retrieves two verified indefinite
 morphology rules, and cites the recorded source and examples.
 
