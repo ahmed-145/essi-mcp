@@ -1,0 +1,5 @@
+{"version": 2, "width": 96, "height": 30, "title": "Essi MCP live Codex demo"}
+[0.0, "o", "Essi MCP  |  Live Codex demo\r\n\r\n> How do I say “water” in Mattokki, and how does the indefinite suffix change? Use only\r\nthe live essi MCP lookup_word and explain_morphology tools, with query water and rule\r\nindefinite. Cite the returned sources and give recorded examples. If no example applies\r\nthe rule to water, make that clear. Keep the answer under 130 words.\r\n"]
+[12.789, "o", "\r\nEssi MCP > lookup_word returned 1 verified roots.\r\n"]
+[12.79, "o", "\r\nEssi MCP > explain_morphology returned 2 verified rules.\r\n"]
+[18.402, "o", "\r\nCodex\r\n“Water” in Mattokki is **essi** (إيسي, ⲉⲥⲥⲓ). (`abdel-hafiz-1988`)\r\n\r\nThe indefinite suffix is **-we:r** after vowels and most consonants. After bilabial\r\nconsonants, **w** assimilates to **b**, giving **-be:r**. Recorded examples include **essi\r\n→ essi-we:r** (“a water”) and **kab → kab-be:r**. (`abdel-hafiz-1988`)\r\n"]

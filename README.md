@@ -6,6 +6,12 @@ Essi MCP gives coding assistants read-only access to the Mattokki (Kenzi Nubian)
 lexicon, lessons, and learner review data stored in Essi's Supabase backend.
 [Project requirements](PRD.md)
 
+## Live demo
+
+[Watch the 31-second MP4](essi-codex-demo.mp4) or [view the terminal recording](essi-codex-demo.cast).
+Codex looks up “water” in live Essi data, retrieves two verified indefinite
+morphology rules, and cites the recorded source and examples.
+
 ## Quick start
 
 With Node.js 22 or later, clone this repository and run these commands from its root.
@@ -69,6 +75,16 @@ Supabase Auth and run with that learner's token so RLS applies. Public tools use
 the public client even when a learner is signed in. The server never stores the
 password or refresh token. Keep tokens and local configuration out of version
 control. Tool payloads have row limits and a 64 KiB JSON size limit.
+
+## Decisions
+
+- **Read-only tools.** Learners and assistants can look up verified content and
+  review progress without recording answers or changing study state.
+- **Public key and learner sessions.** Public requests use a publishable or anon
+  key. Learner requests use the learner's own access token so the database can
+  enforce row-level security.
+- **Stdio first.** Codex starts the server as a local child process. This keeps
+  installation simple and avoids running a network listener for a local tool.
 
 ## Tests and packaging
 
