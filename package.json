@@ -1,0 +1,23 @@
+{
+  "name": "essi-mcp",
+  "version": "0.1.0",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "bin": { "essi-mcp": "dist/cli.js" },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "lint": "tsc --noEmit",
+    "test": "npm run build && node --test --experimental-test-coverage test/*.test.mjs",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "@supabase/supabase-js": "2.110.0",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.3",
+    "typescript": "5.9.3"
+  }
+}
