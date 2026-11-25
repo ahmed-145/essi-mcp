@@ -1,16 +1,31 @@
 # PRD: essi-mcp, an MCP server for the Essi (Learn Nubian) backend
 
-- **Owner:** Ahmed Mahmoud Abbas
+- **Owner:** Ahmed Mahmoud Abbas (software engineer, builder of the Essi app)
 - **Status:** Draft v1 (Nov 25, 2026)
 - **Build time:** about 1 to 1.5 weeks at 10 to 15 h/week
 - **Budget:** $0 (Supabase free tier, GitHub Actions free minutes, no paid APIs)
-- **Build order:** Build this FIRST. It is small, ships fast, and teaches the MCP protocol you reuse in the second repo (oncall-triage-agent).
+- **Related repo:** `oncall-triage-agent` (same owner). Build this one first: it is small and teaches the MCP protocol that repo reuses.
+
+
+## 0. Summary for a reader with no context
+
+**What it is.** A small server that lets AI coding assistants (for example OpenAI Codex or Claude) read data from Essi, a mobile app for learning Mattokki (Kenzi Nubian), an endangered language spoken by Nubian people in southern Egypt.
+
+**The problem.** Essi stores verified words, grammar rules and learner progress in a database. An AI assistant cannot use any of that. Today, if a user asks an assistant how to say something in Mattokki, it guesses, and for a low-resource language the guesses are often wrong. Developers who want to build on Essi data have no standard way in either.
+
+**The solution.** Implement MCP (Model Context Protocol, an open standard that lets AI assistants call external tools) on top of Essi's backend. The assistant then calls tools like `lookup_word` and gets answers grounded in the verified data instead of guessing.
+
+**Who it is for.**
+1. Essi learners and developers who want an assistant that answers from verified Nubian data.
+2. Hiring managers and engineers reviewing the owner's portfolio. This repo is meant to show real engineering: tool design for agents, auth boundaries, tests, CI and packaging.
+
+**Terms.** MCP: standard for connecting AI assistants to tools and data. Supabase: hosted PostgreSQL with auth and an API. RLS (row level security): database rules that limit each user to their own rows. SRS/SM-2: spaced repetition scheduling for flashcard review. stdio transport: the assistant starts the server as a local process and talks to it through standard input and output.
 
 ## 1. Why this exists
 
 Essi already has a real backend: Supabase PostgreSQL with row level security, a server-side SM-2 spaced repetition engine (trigger `trg_update_srs_on_answer`, RPC `generate_review_session`), and a verified Mattokki lexicon and grammar data set. Nothing lets an AI agent use it. This repo exposes Essi as MCP tools so Codex (or any MCP client) can look up Nubian words, explain morphology and pull a learner's review queue.
 
-What it proves to a recruiter: you can design a tool interface for agents, respect an auth boundary (RLS, no service key), test a protocol server, and ship it with CI and a container. It also gives Essi a second life as a tool people can actually install.
+What it proves to a recruiter: the owner can design a tool interface for agents, respect an auth boundary (RLS, no service key), test a protocol server, and ship it with CI and a container. It also gives Essi a second life as a tool people can actually install.
 
 Honest limit: the lexicon is small (25 verified roots, 12 lessons per the Essi README). This is a focused, well-built wrapper, not a big system. Its value is in the quality of the engineering, not the size. Do not oversell it.
 
@@ -55,7 +70,7 @@ Rules: every tool has a typed schema, clear descriptions, bounded output size, a
 - Backend access: `@supabase/supabase-js` with anon key from env. Per-learner tools read `ESSI_ACCESS_TOKEN`, obtained by a small `essi-mcp login` command that signs in with email and password and stores only the session token locally. Never store the password.
 - Config: `.env.example`, no secrets in the repo, secret scanning enabled.
 - Packaging: `npm` bin entry so `npx` can run it, plus a Dockerfile (multi-stage, non-root).
-- Codex setup: README shows the MCP server entry for Codex's config. Check the current Codex MCP config format in its docs when you write it.
+- Codex setup: README shows the MCP server entry for Codex's config. Check the current Codex MCP config format in its docs when writing it.
 
 ## 6. Milestones
 
@@ -73,14 +88,14 @@ Rules: every tool has a typed schema, clear descriptions, bounded output size, a
 
 - CI green on main. README has install, config, tool list, security notes, and a demo GIF or clip.
 - A "Decisions" section in the README: why read-only, why no service key, why stdio first.
-- You can explain every file in the repo out loud without notes. If you cannot, do not ship it yet. (You have said you worry about the "vibe coder" label. Writing the decisions section yourself is the cure.)
+- The owner can explain every file in the repo out loud without notes. If not, do not ship it yet. Writing the decisions section by hand, without generating it, keeps the work honest and makes it usable as interview preparation.
 
 ## 8. What it shows a recruiter
 
-- You understand agent tooling at the protocol level, not just prompting.
-- You think about auth boundaries and least privilege.
-- You ship tested, containerized, documented software.
-- It is attached to a product you care about (Nubian language), which makes a good interview story.
+- Understanding of agent tooling at the protocol level, not just prompting.
+- Thought about auth boundaries and least privilege.
+- Ships tested, containerized, documented software.
+- It is attached to a real product with a personal story behind it (the owner is Nubian), which makes a good interview story.
 
 ## 9. Risks
 
