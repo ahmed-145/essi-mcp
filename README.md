@@ -80,9 +80,10 @@ control. Tool payloads have row limits and a 64 KiB JSON size limit.
 
 - **Read-only tools.** Learners and assistants can look up verified content and
   review progress without recording answers or changing study state.
-- **Public key and learner sessions.** Public requests use a publishable or anon
-  key. Learner requests use the learner's own access token so the database can
-  enforce row-level security.
+- **Keep row-level security in force.** Public requests use a publishable or
+  anon key. Learner requests use the learner's own access token, so Supabase
+  can enforce access to that learner's rows. Service-role keys bypass those
+  policies and are rejected by the server configuration.
 - **Stdio first.** Codex starts the server as a local child process. This keeps
   installation simple and avoids running a network listener for a local tool.
 

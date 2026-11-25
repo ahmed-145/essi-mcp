@@ -1,7 +1,7 @@
 # PRD: essi-mcp, an MCP server for the Essi (Learn Nubian) backend
 
 - **Owner:** Ahmed Mahmoud Abbas (software engineer, builder of the Essi app)
-- **Status:** Draft v1 (Nov 25, 2026)
+- **Status:** v1 shipped. Owner sign-off reported in chat.
 - **Build time:** about 1 to 1.5 weeks at 10 to 15 h/week
 - **Budget:** $0 (Supabase free tier, GitHub Actions free minutes, no paid APIs)
 - **Related repo:** `oncall-triage-agent` (same owner). Build this one first: it is small and teaches the MCP protocol that repo reuses.
@@ -89,6 +89,13 @@ Rules: every tool has a typed schema, clear descriptions, bounded output size, a
 - CI green on main. README has install, config, tool list, security notes, and a demo GIF or clip.
 - A "Decisions" section in the README: why read-only, why no service key, why stdio first.
 - The owner can explain every file in the repo out loud without notes. If not, do not ship it yet. Writing the decisions section by hand, without generating it, keeps the work honest and makes it usable as interview preparation.
+
+### v1 verification and sign-off
+
+- MCP Inspector listed all six tools and called the live word lookup and lesson list. All four public tools passed live checks.
+- Both QA learners passed the live progress and review calls. Both review queues were empty. The live RLS test confirmed that each learner could read only their own profile.
+- A clean clone on the verification machine passed install, build, lint, tests, and npm package execution. Codex called the live public tools from that clone. The 60-second demo is on `main`, and the [main CI run](https://github.com/ahmed-145/essi-mcp/actions/runs/45535044778) passed the package and Docker checks.
+- Ahmed Mahmoud Abbas reported his sign-off in chat. The README Decisions text was prepared with Codex at his request. The file-by-file walkthrough depends on the owner's personal review.
 
 ## 8. What it shows a recruiter
 
