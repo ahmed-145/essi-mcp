@@ -4,7 +4,7 @@
 
 Essi MCP gives coding assistants read-only access to the Mattokki (Kenzi Nubian)
 lexicon, lessons, and learner review data stored in Essi's Supabase backend.
-[Project requirements](PRD.md)
+
 
 ## Live demo
 
